@@ -2,10 +2,10 @@ var tumblrwks = require("tumblrwks");
 var sleep = require("system-sleep");
 
 var tumblr = new tumblrwks({
-	consumerKey: "5oZIvD8mfO8S61Pya3sF5a3rmPCypHX6AygHsNRmWDCiurR26B",
-	consumerSecret: "aKdV89OvlB1A3mbieZTseOtFoblOXn5wB4E2bZ9SzWT8COPTND",
-	accessToken: "sxkprwwPdQZByfNouSjShiAU8HVFbtkaP7Q5knbGdKH9qTh5Cc",
-	accessSecret: "Ik3cO1JLda0xsvcnlbDZcrsGj7sXAKXf6dGWJvBrnfGr2an6gq"
+	consumerKey: "",
+	consumerSecret: "",
+	accessToken: "",
+	accessSecret: "" //add yours here
 }, "juice-ai.tumblr.com");
 
 function postFart() {
