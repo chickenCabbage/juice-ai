@@ -8,6 +8,15 @@ var tumblr = new tumblrwks({
 	accessSecret: "Ik3cO1JLda0xsvcnlbDZcrsGj7sXAKXf6dGWJvBrnfGr2an6gq"
 }, "juice-ai.tumblr.com");
 
+var args = process.argv.slice(2);
+if(args[0] == "-t") {
+	console.log("Script works well.");
+	process.exit(0); //you're okay
+}
+else {
+	console.log("Invalid parameters, executing normally.");
+}
+
 function postFart() {
 	console.log(new Date());
 	tumblr.post("/post",
