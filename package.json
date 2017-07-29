@@ -1,0 +1,24 @@
+{
+  "name": "juice-ai",
+  "version": "1.0.0",
+  "description": "Posts \"fart\" on Tumblr",
+  "main": "main.js",
+  "dependencies": {
+    "system-sleep": "^1.3.5",
+    "tumblrwks": "^0.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chickenCabbage/juice-ai.git"
+  },
+  "author": "Alon Shiboleth",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chickenCabbage/juice-ai/issues"
+  },
+  "homepage": "https://github.com/chickenCabbage/juice-ai#readme"
+}
