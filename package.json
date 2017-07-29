@@ -9,7 +9,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "-t"
+    "test": "node main.js -t", "start": "node main.js"
   },
   "repository": {
     "type": "git",
