@@ -13,7 +13,7 @@ if(args[0] == "-t") {
 	console.log("Script works well.");
 	process.exit(0); //you're okay
 }
-else {
+else if(args[0]){ //if you have args but they're not as expected
 	console.log("Invalid parameters, executing normally.");
 }
 
