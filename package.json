@@ -1,47 +1,26 @@
 {
-
-    "name": "juice-ai",
-
-    "version": "1.0.0",
-
-    "description": "Posts 'fart' on Tumblr.",
-
-    "main": "main.js",
-
-    "dependencies": {
-            "system-sleep": "^1.3.5",
-
-            "tumblrwks": "^0.3.0"
-
-    },
- 
-    "devDependencies": {},
-
-    "scripts": {
-
-        "test": "node main.js -t",
-        "start": "node main.js"
-
-    },
-
-    "repository": {
-
-        "type": "git",
-
-        "url": "git+https://github.com/chickenCabbage/juice-ai.git"
-
-    },
-
-    "author": "Alon Shiboleth",
-
-    "license": "ISC",
-
-    "bugs": {
-
-        "url": "https://github.com/chickenCabbage/juice-ai/issues"
-
-    },
-
-    "homepage": "https://github.com/chickenCabbage/juice-ai#readme"
-
+  "name": "juice-ai",
+  "version": "1.0.0",
+  "description": "Posts fart on tumblr",
+  "main": "main.js",
+  "scripts": {
+    "test": "node main.js -t"
+  },
+  "engines": {
+    "node": "7.10.0"
+  },
+  "dependencies": {
+    "tumblrwks": ">= 0.3.0",
+    "system-sleep": ">= 1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chickenCabbage/juice-ai.git"
+  },
+  "author": "Alon Shiboleth",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chickenCabbage/juice-ai/issues"
+  },
+  "homepage": "https://github.com/chickenCabbage/juice-ai#readme"
 }

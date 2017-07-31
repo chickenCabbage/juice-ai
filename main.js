@@ -1,5 +1,9 @@
 var tumblrwks = require("tumblrwks");
 var sleep = require("system-sleep");
+var http = require("http");
+var fs = require("fs");
+
+var port = process.env.PORT || 8080;
 
 var tumblr = new tumblrwks({
 	consumerKey: "5oZIvD8mfO8S61Pya3sF5a3rmPCypHX6AygHsNRmWDCiurR26B",
@@ -17,7 +21,7 @@ else if(args[0]){ //if you have args but they're not as expected
 	console.log("Invalid parameters, executing normally.");
 }
 
-function postFart() {
+function postFart() { //posts to tumblr
 	console.log(new Date());
 	tumblr.post("/post",
 		{
@@ -31,7 +35,34 @@ function postFart() {
 			console.log("fart\n");
 		}
 	);
-}
+} //end postFart()
+
+function howLong() { //calculates the time until 4:10
+	var now = new Date();
+	var end;
+	if(now.getUTCHours() <= 4) {
+		if(now.getUTCMinutes() < 10) end = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 4, 10);
+		//it hasn't been 4:10 today yet
+		else if(now.getUTCMinutes() == 10) return "Now!";
+		else end = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1, 4, 10);
+		//if it's 4 but past 10
+	}
+	else end = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1, 4, 10); //if it's past 4:10
+	return parseInt((end.getTime() - now.getTime()) / (1000 * 60)) + " minutes until 4:10 UTC.";
+} //end howLong()
+
+http.createServer(function(request, response) { //serve the text
+	if(request.url == "/favicon.ico") {
+		response.end("No favicon.");
+	}
+	else {
+		response.end(howLong());
+	}
+}).listen(port, function(err) {
+	if(err) {
+		console.log("ERROR! " + err);
+	}
+});
 
 console.log("Starting now.");
 
@@ -43,17 +74,26 @@ while(true) {
 
 	//sleep system:
 
-	if(!(hour == 3 && minute >= 30) && hour != 4) sleep(1000 * 60 * 30); //if it's not 3 or 4, wait half an hour
+	if(!(hour == 3 && minute >= 30) && hour != 4) {
+		console.log("sleeping 14 minutes");
+		sleep(1000 * 60 * 14); //if it's not 3 or 4, wait 14 minutes
+	}
 	else { //if it's either past 3 and a half or 4
 		if(hour == 3) { //if the hour is past 3 and a half
+			console.log("sleeping 5 minutes");
 			sleep(1000 * 60 * 5); //if it's past 3 and a half, wait five minutes
 		}
 		else { //if the hour is 4
 			if(minute == 10) {
 				postFart(); //if it's 4:10!
-				sleep(1000 * 60 * 60 * 21); //wait 21 hours
+				console.log("sleeping 14 minutes");
+				sleep(1000 * 60 * 14); //wait 14 minutes
 			}
-			else sleep(1000 * 60 * 0.25); //if it's not 4:10 yet, wait 15 seconds
+			else {
+				sleep(1000 * 60 * 0.25); //if it's not 4:10 yet, wait 15 seconds
+			}
 		}
 	}
 }
+
+//waiting 14 minutes to prevent heroku dyno sleep
