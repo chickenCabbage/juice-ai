@@ -51,6 +51,14 @@ function howLong() { //calculates the time until 4:10
 	return parseInt((end.getTime() - now.getTime()) / (1000 * 60)) + " minutes until 4:10 UTC.";
 } //end howLong()
 
+function queryHeroku() {
+	var options = {
+		host: "juice-ai.herokuapp.com",
+		path: "/"
+	};
+	http.request(options).end();
+}
+
 http.createServer(function(request, response) { //serve the text
 	if(request.url == "/favicon.ico") {
 		response.end("No favicon.");
@@ -75,19 +83,22 @@ while(true) {
 	//sleep system:
 
 	if(!(hour == 3 && minute >= 30) && hour != 4) {
-		console.log("sleeping 14 minutes");
-		sleep(1000 * 60 * 14); //if it's not 3 or 4, wait 14 minutes
+		console.log("sleeping 20 minutes");
+		queryHeroku();
+		sleep(1000 * 60 * 20); //if it's not 3 or 4, wait 14 minutes
 	}
 	else { //if it's either past 3 and a half or 4
 		if(hour == 3) { //if the hour is past 3 and a half
 			console.log("sleeping 5 minutes");
+			queryHeroku();
 			sleep(1000 * 60 * 5); //if it's past 3 and a half, wait five minutes
 		}
 		else { //if the hour is 4
 			if(minute == 10) {
 				postFart(); //if it's 4:10!
-				console.log("sleeping 14 minutes");
-				sleep(1000 * 60 * 14); //wait 14 minutes
+				console.log("sleeping 20 minutes");
+				queryHeroku();
+				sleep(1000 * 60 * 20); //wait 14 minutes
 			}
 			else {
 				sleep(1000 * 60 * 0.25); //if it's not 4:10 yet, wait 15 seconds
@@ -96,4 +107,4 @@ while(true) {
 	}
 }
 
-//waiting 14 minutes to prevent heroku dyno sleep
+//waiting 20 minutes to prevent heroku dyno sleep
