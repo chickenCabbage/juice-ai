@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JUICE-AI</title>
+	<style>
+		body {
+			background-color: black;
+			margin: 0;
+			font-family: monospace;
+			text-align: center;
+			color: white;
+			overflow: hidden;
+		}
+
+		::selection {
+			background: #91ccd6; /*WebKit/Blink*/
+		}
+		::-moz-selection {
+			background: #91ccd6 ; /*Gecko*/
+		}
+
+		#bg {
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			top: 0%;
+			left: 0%;
+			z-index: -1;
+			opacity: 0.3;
+
+			/*saving these for later, in case like it grayscale*/
+			-webkit-filter: grayscale(0%); /*Safari*/
+			filter: grayscale(0%);
+		}
+
+		.marked {
+			-ms-transform: skewX(-15deg);
+			-webkit-transform: skewX(-15deg);
+			transform: skewX(-15deg);
+
+			background-color: white;
+			color: black;
+			padding: 0.5%;
+			padding-right: 3%;
+			padding-left: 3%;
+			display: inline-block;
+		}
+
+		.backrot {
+			-ms-transform: skewX(15deg); /*Internet Explorer*/
+			-webkit-transform: skewX(15deg); /*Safari*/
+			transform: skewX(15deg); /*As it should be*/
+		}
+
+		#center {
+			width: 100%;
+			top: 30%;
+			left: 0%;
+			position: absolute;
+		}
+
+		#links {
+			width: 50%;
+			left: 25%;
+			height: 20%;
+			top: 80%;
+			position: absolute;
+		}
+
+		#imageSource {
+			left: 1%;
+			bottom: 1%;
+			position: absolute;
+			font-size: 0.75em;
+		}
+
+		a:link, a:hover, a:visited {
+			color: white;
+		}
+	</style>
+</head>
+<body>
+	<img id="bg" src="https://www.nasa.gov/sites/default/files/thumbnails/image/pia20028_main-rotate.jpg">
+
+	<div id="center">
+		<div class="marked">
+			<h1 class="backrot" id="time">An error has occured.</h1>
+		</div>
+	</div>
+
+	<div id="links">
+		<a href="https://www.sbnation.com/a/17776-football">17776 Football, by Jon Bois</a>
+		<br>
+		<a href="http://sci.esa.int/juice/">Euro. Space Agency: JUICE</a>
+		<br>
+		<a href="https://juice-ai.tumblr.com/">Fart messages on Tumblr</a>
+	</div>
+	<a href="https://www.nasa.gov/" id="imageSource">Image of Europa's surface, courtsey of NASA</a>
+</body>
+</html>
